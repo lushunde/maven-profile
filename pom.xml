@@ -33,9 +33,7 @@
 			<properties>
 				<profiles.active>dev</profiles.active>
 			</properties>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
+			
 		</profile>
 		<profile>
 			<!-- 测试环境 -->
@@ -43,6 +41,9 @@
 			<properties>
 				<profiles.active>test</profiles.active>
 			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 		</profile>
 		<profile>
 			<!-- 生产环境 -->
@@ -74,6 +75,13 @@
 			<filter>src/main/resources/config/${profiles.active}/application.properties</filter>
 		</filters>
 		<resources>
+			<resource>
+				<!-- 包含java目录下的xml配置文件 -->
+				<directory>src/main/resources/config/${profiles.active}</directory>
+				<includes>
+					<include>static/profile.html</include>
+				</includes>
+			</resource>
 			<resource>
 				<!-- 包含java目录下的xml配置文件 -->
 				<directory>src/main/java</directory>
